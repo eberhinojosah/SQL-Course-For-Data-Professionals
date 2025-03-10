@@ -1,0 +1,159 @@
+/*
+This script contains all the SQL statements
+from the Introduction to SQL section of the course
+*/
+
+-- Demonstrate the CREATE TABLE statement
+CREATE TABLE population
+(
+    country VARCHAR(50),  -- Country names are expected to be no longer than 50 characters
+    total_population INT
+);
+
+
+-- Insert the population of India
+INSERT INTO population
+  (country, total_population)
+VALUES
+  ('India', 1428627663);
+
+SELECT * FROM population;
+
+-- Insert the population of all remaining countries
+
+INSERT INTO population
+(country, total_population)
+VALUES
+('China', 1425671352),
+('United States', 339996564),
+('Indonesia', 277534123),
+('Pakistan', 240485658),
+('Nigeria', 223804632),
+('Brazil', 216422446),
+('Bangladesh', 172954319),
+('Russia', 144444359),
+('Mexico', 128455567); 
+
+SELECT * FROM population;
+
+-- Demonstrate SELECT statements
+
+SELECT country,
+       total_population
+  FROM population;
+
+SELECT total_population,
+       country
+  FROM population;
+
+-- Demonstrate WHERE clause
+
+SELECT total_population,
+       country
+  FROM population
+ WHERE country = 'Russia';
+
+-- Demonstrate updating data
+
+SELECT total_population
+  FROM population
+ WHERE country = 'United States';
+
+UPDATE population
+   SET total_population = 341234567
+ WHERE country = 'United States';
+
+-- Demonstrate deleting data
+
+DELETE 
+  FROM population
+ WHERE country = 'Russia';
+
+SELECT *
+  FROM population;
+
+DELETE
+  FROM population;
+
+-- Demonstrate DROP Table
+
+DROP TABLE population;
+
+SELECT * 
+  FROM population;
+
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+ /*
+ Challenge 1 Introduction to SQL Statements
+
+ Your challenge
+
+1) Write a CREATE TABLE statement to create a table as below
+
+    Table Name - popular_databases
+
+    Columns -
+
+       a) database_name with data type VARCHAR(50)
+	   b) number_of_votes with datatype INT
+
+      Please use INT as the datatype of number_of_votes, not INTEGER as the unit testing expects INT.
+
+2) Write an INSERT statement to insert the 5 database names and the number of votes from the chart above to the table popular_databases. Please ensure to use the right case for database names. For example use MySQL, not mysql.
+
+3) Write a SELECT statement to select all the data from the table popular_databases.
+ */
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+
+--1.-
+CREATE TABLE popular_databases
+(
+    database_name VARCHAR(50),  -- Country names are expected to be no longer than 50 characters
+    number_of_votes INT
+);
+
+--2.-
+INSERT INTO popular_databases
+(database_name, number_of_votes)
+VALUES
+('PostgreSQL', 34909),
+('MySQL', 31489),
+('SQLite', 23678),
+('MongoDB', 19556),
+('Microsoft SQL Server', 19506);
+
+--3.-
+SELECT * from popular_databases;
+
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+ /*
+ Challenge 2 - Introduction to SQL Statements
+
+ Your challenge
+
+1) Update the table popular_databases with the number_of_votes as 32000 for the database_name MySQL.
+
+2) Delete the record for the database_name MongoDB from the table
+
+3) Select all the data from the table
+*/
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+
+--1.-
+UPDATE popular_databases
+   SET number_of_votes = 32000
+ WHERE database_name = 'MySQL';
+
+ --2.-
+ DELETE
+  FROM popular_databases
+  WHERE database_name = 'MongoDB';
+
+  --3.-
+  
+SELECT * FROM popular_databases;
+
